@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'final-project';
+
+  openMenu: boolean = false;
+
+  changeStatus() {
+
+    this.openMenu = (this.openMenu) ? false : true;
+  }
 }

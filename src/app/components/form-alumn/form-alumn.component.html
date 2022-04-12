@@ -1,0 +1,62 @@
+<form #form="ngForm"
+      (ngSubmit)="saveAlumn(form)">
+      <h1 mat-dialog-title>Agregar Alumno</h1>
+      <mat-dialog-content>
+        <section fxLayoutAlign="center">
+          <mat-card fxFlex="100%">
+            <div fxLayout="column"
+                  fxLayoutAlign="center center"
+                  fxLayoutGap="10px"
+                  >
+                  <mat-form-field style="width: 100%">
+                    <mat-label> Código </mat-label>
+                    <input type="text" matInput placeholder="Código" name="code" ngModel required value="dasd" >
+                    <mat-error>Debe ingresar código</mat-error>
+                  </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label> Nombre </mat-label>
+                <input type="text" matInput placeholder="Nombre" name="firstName" ngModel required>
+                <mat-error>Debe ingresar nombre</mat-error>
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label> Apellidos </mat-label>
+                <input type="text" matInput placeholder="Apellidos" name="lastName" ngModel required>
+                <mat-error>Debe ingresar apellidos</mat-error>
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label> Identificación </mat-label>
+                <input type="text" matInput placeholder="identificacion" name="identification" ngModel required>
+                <mat-error>Debe ingresar identificación</mat-error>
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label> Seleccione curso </mat-label>
+                <mat-select [(ngModel)]="selectCourse" name="course">
+                  <mat-option value="React">
+                    React
+                  </mat-option>
+                  <mat-option value="Angular">
+                    Angular
+                  </mat-option>
+                  <mat-option value="Docker">
+                    Docker
+                  </mat-option>
+                  <mat-option value="C#">
+                    C#
+                  </mat-option>
+                  <mat-option value="SQL">
+                    SQL
+                  </mat-option>
+                </mat-select>
+                <mat-error>Debe ingresar identificación</mat-error>
+              </mat-form-field>
+            </div>
+          </mat-card>
+        </section>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="true">Cerrar</button>
+        <button mat-button type="submit">Guardar</button>
+      </mat-dialog-actions>
+
+</form>
+

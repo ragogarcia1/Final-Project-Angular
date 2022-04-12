@@ -1,0 +1,46 @@
+<mat-table [dataSource]="alumns" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="FullName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+    <mat-cell *matCellDef="let alumn"> {{ alumn.Code }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Code">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let alumn"> {{ alumn.FullName }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Identification">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
+    <mat-cell *matCellDef="let alumn"> {{ alumn.Identification }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Courses">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Cursos</mat-header-cell>
+    <mat-cell *matCellDef="let alumn">
+      <mat-nav-list>
+          <mat-list-item role="listitem">{{ alumn.Course }}</mat-list-item>
+      </mat-nav-list>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="State">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+    <mat-cell *matCellDef="let alumn">
+       {{ (alumn.State) ? 'Aprobado' : 'Reprobado' }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Action">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</mat-header-cell>
+    <mat-cell *matCellDef="let alumn" fxLayoutGap="10px">
+      <button color="warn" mat-raised-button (click)="removeAlumn(alumn)">Delete</button>
+      <button color="accent" mat-raised-button (click)="openDialog(alumn)">Edit</button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="deployColumns"></mat-header-row>
+  <mat-row *matRowDef="let row, columns: deployColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]">
+</mat-paginator>
+
+<button mat-fab id="add-button" color="primary" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>
+
+
