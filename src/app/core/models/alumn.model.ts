@@ -1,5 +1,5 @@
 export interface Alumn {
-  Id?: number;
+  AlumnId?: number;
   FullName: string;
   Identification: string;
   Code?: string;
