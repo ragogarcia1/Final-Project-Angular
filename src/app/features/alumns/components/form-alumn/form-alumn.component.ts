@@ -26,8 +26,8 @@ export class FormAlumnComponent{
         "Code": "code102",
         "Course": "Docker",
         "State": true,
-        "AdmissionDate": "'20/05/2020'",
-        "AlumnId": "9821"
+        "AdmissionDate": new Date('02/23/2022'),
+        "AlumnId": 9821
         // "FullName": form.value.firstName +' '+ form.value.lastName,
         // "Identification": form.value.identification,
         // "Code": form.value.code,

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlumnComponent } from './features/alumns/components/alumn/alumn.component';
 
 const routes: Routes = [
       { path: 'alumns', loadChildren: () => import('./features/alumns/alumns.module').then(module => module.AlumnsModule)},
+      { path: 'courses', loadChildren: () => import('./features/courses/courses.module').then(module => module.CoursesModule)},
 ];
 
 @NgModule({
