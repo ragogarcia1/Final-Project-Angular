@@ -1,4 +1,4 @@
-<mat-table [dataSource]="listAlumn$" class="mat-elevation-z8" matSort>
+<mat-table [dataSource]="listAlumns" class="mat-elevation-z8" matSort>
   <ng-container matColumnDef="FullName">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
     <mat-cell *matCellDef="let alumn"> {{ alumn.Code }}</mat-cell>
@@ -30,7 +30,7 @@
       >Acciones</mat-header-cell
     >
     <mat-cell *matCellDef="let alumn" fxLayoutGap="10px">
-      <button color="warn" mat-raised-button (click)="removeAlumn(alumn)">
+      <button color="warn" mat-raised-button (click)="removeAlumn(alumn.AlumnId)">
         Delete
       </button>
       <button color="accent" mat-raised-button (click)="openDialog(alumn)">

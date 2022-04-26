@@ -19,33 +19,33 @@ import { MatDialog } from '@angular/material/dialog';
 export class AlumnComponent implements OnInit, OnDestroy {
 
   deployColumns = ['FullName','Code','Identification', 'Courses', 'State', 'Action'];
-  
+
   listAlumns!: any;
-  listAlumn$!: Observable<any>;
-  alumns = new MatTableDataSource<Alumn>();
+
+
   private alumnSubscription!: Subscription;
 
   constructor(private _alumnService: AlumnService,
               private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.listAlumn$ = this._alumnService.getAlumns();
-    this.alumnSubscription = this.listAlumn$.subscribe((alumns) => {
-      this.listAlumn$ = alumns;
-    });
+    this._alumnService.getAlumns().subscribe((alumns: Alumn) =>{
+      this.listAlumns = alumns;
+    })
   }
 
   ngOnDestroy(): void {
     this.alumnSubscription.unsubscribe();
   }
 
-  removeAlumn(alumn: Alumn) {
-    this._alumnService.deleteAlumn(alumn);
+  removeAlumn(id: number){
+    this._alumnService.deleteAlumn(id);
   }
 
   openDialog(alumn?: Alumn){
     this.dialog.open(FormAlumnComponent, {
-      width: '350px'
+      width: '350px',
+      data: alumn
     });
   }
 }

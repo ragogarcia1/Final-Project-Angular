@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, tap } from "rxjs";
 import { Alumn } from "../models/alumn.model";
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Alumn } from "../models/alumn.model";
 
 export class AlumnService {
 
-  listAlumns$!: Observable<Alumn[]>;
+  listAlumns!: Alumn[];
   // = [{
   //   Id: 1,
   //   FullName: "Leodora Sockell",
@@ -59,27 +59,24 @@ export class AlumnService {
 
   alumnsSubject = new Subject<Alumn>();
 
-  addAlumn(alumn: Alumn) {
-    // this.listAlumns$.push(alumn);
+  getAlumns(): Observable<Alumn>{
+     return this.httpClient.get<Alumn>(this.UrlServiceAlum);
+  }
+
+  createAlumn(alumn: Alumn): Observable<Alumn> {
+    return this.httpClient.post<Alumn>(this.UrlServiceAlum, alumn)
+      .pipe(
+        tap(() => {
+          this.listAlumns.push(alumn);
+        })
+      )
     // this.alumnsSubject.next(alumn);
+    // return response;
   }
 
-  getAlumns(): Observable<any>{
-    const response =  this.httpClient.get(this.UrlServiceAlum);
-    return response;
-  }
+  deleteAlumn(id: number) {
 
-  createAlumn(alumn: any) {
-    debugger
-    const response = this.httpClient.post(this.UrlServiceAlum, alumn);
-    this.alumnsSubject.next(alumn);
-    console.log(response, alumn)
-    return response;
-  }
-
-  deleteAlumn(alumn: any) {
-    // this.listAlumns$ = this.listAlumns$.filter( b => b !== alumn);
-    // this.alumnsSubject.next(alumn);
+    return this.httpClient.delete(`${this.UrlServiceAlum}${id}`);
   }
 
 }

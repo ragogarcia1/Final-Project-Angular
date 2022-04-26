@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlumnComponent } from './features/alumns/components/alumn/alumn.component';
 
 const routes: Routes = [
-  { path: 'register-alumn', component: AlumnComponent},
-
+      { path: 'alumns', loadChildren: () => import('./features/alumns/alumns.module').then(module => module.AlumnsModule)},
 ];
 
 @NgModule({
