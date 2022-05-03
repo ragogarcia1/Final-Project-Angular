@@ -35,7 +35,9 @@ export class AlumnComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.alumnSubscription.unsubscribe();
+    if(this.alumnSubscription){
+      this.alumnSubscription.unsubscribe();
+    }
   }
 
   removeAlumn(id: number){

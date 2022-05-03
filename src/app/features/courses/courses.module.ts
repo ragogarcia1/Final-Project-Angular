@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CourseComponent } from './components/course/course.component';
 import { MaterialModule } from '../../material.module';
 import { CoursesComponent } from './components/courses/courses.component';
-import { SharedModule } from '../../shared/shared.module';
 import { CoursesRoutingModule } from './courses.routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../../shared/shared.module';
 
 
 

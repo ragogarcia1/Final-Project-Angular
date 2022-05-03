@@ -1,0 +1,60 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="registerUser(f)"
+  >
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')">Dont</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="First Name"
+        ngModel
+        name="firstName"
+        required
+      />
+      <mat-error>Debe ingresar nombre</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Last Name"
+        ngModel
+        name="lastName"
+      />
+    </mat-form-field>
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      Save
+    </button>
+  </form>
+</section>
+
+<!-- <section id="container">
+  <div id="one" class="element"></div>
+  <div id="two" class="element"></div>
+  <div id="three" class="element"></div>
+</section> -->
