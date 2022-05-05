@@ -41,7 +41,7 @@ export class AlumnComponent implements OnInit, OnDestroy {
   }
 
   removeAlumn(id: number){
-    this._alumnService.deleteAlumn(id);
+    this._alumnService.deleteAlumn(id).subscribe( response => console.log(response))
   }
 
   openDialog(alumn?: Alumn){
