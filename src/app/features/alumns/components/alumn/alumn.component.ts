@@ -9,6 +9,8 @@ import { AlumnService } from 'src/app/core/services/alumn.service';
 //MaterialUI
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { FormAlumnCreateComponent } from '../form-alumn-create/form-alumn-create.component';
+import { CourseService } from '../../../../core/services/course.service';
 
 @Component({
   selector: 'alumn',
@@ -22,16 +24,18 @@ export class AlumnComponent implements OnInit, OnDestroy {
 
   listAlumns!: any;
 
+  currentCourses!: any;
 
   private alumnSubscription!: Subscription;
 
   constructor(private _alumnService: AlumnService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private courseService: CourseService) {
 
-  ngOnInit() {
-    this._alumnService.getAlumns().subscribe((alumns: Alumn) =>{
-      this.listAlumns = alumns;
-    })
+  }
+
+  async ngOnInit() {
+    this.currentCourses = await this.courseService.getCourses();
   }
 
   ngOnDestroy(): void {
@@ -44,10 +48,16 @@ export class AlumnComponent implements OnInit, OnDestroy {
     this._alumnService.deleteAlumn(id).subscribe( response => console.log(response))
   }
 
-  openDialog(alumn?: Alumn){
+  openDialogEdit(){
     this.dialog.open(FormAlumnComponent, {
-      width: '350px',
-      data: alumn
+      width: '450px'
     });
+  }
+
+  openDialogCreate(){
+    this.dialog.open(FormAlumnCreateComponent, {
+      width: '450px',
+      data: this.currentCourses
+    })
   }
 }

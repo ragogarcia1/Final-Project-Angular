@@ -31,10 +31,10 @@
     >
     <mat-cell *matCellDef="let alumn" fxLayoutGap="10px">
       <button color="warn" mat-raised-button (click)="removeAlumn(alumn.AlumnId)">
-        Delete
+        {{ 'Eliminar' }}
       </button>
-      <button color="accent" mat-raised-button (click)="openDialog(alumn)">
-        Edit
+      <button color="accent" mat-raised-button (click)="openDialogEdit()">
+        {{ 'Editar' }}
       </button>
     </mat-cell>
   </ng-container>
@@ -42,6 +42,6 @@
   <mat-row *matRowDef="let row; columns: deployColumns"></mat-row>
 </mat-table>
 
-<button mat-fab id="add-button" color="primary" (click)="openDialog()">
+<button mat-fab id="add-button" color="primary" (click)="openDialogCreate()">
   <mat-icon>add</mat-icon>
 </button>

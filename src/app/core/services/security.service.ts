@@ -3,6 +3,7 @@ import { LoginData } from '../models/login_data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class ServiceSecurity {
@@ -15,16 +16,13 @@ export class ServiceSecurity {
 
   }
 
-  register(user: Alumn) {
+  registerUser(user: User) {
     this.user = {
-      AlumnId: Math.round(Math.random() * 10000),
       Email: user.Email,
-      FullName: user.FullName,
-      Identification: user.Identification,
-      Password: user.Password,
-      State: true
+      FirstName: user.FirstName,
+      LastName: user.LastName,
+      Password: user.Password
     };
-
     this.changeSecurity.next(true);
     this._router.navigate(['/']);
   }
@@ -49,6 +47,7 @@ export class ServiceSecurity {
   }
 
   onSesion(){
+    debugger
     return this.user != null;
   }
 }

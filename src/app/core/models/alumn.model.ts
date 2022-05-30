@@ -4,8 +4,6 @@ export interface Alumn {
   Email?: string;
   Identification: string;
   Code?: string;
-  Course?: string;
+  Courses?: [];
   State: boolean;
-  AdmissionDate?: Date;
-  Password?: string;
 }

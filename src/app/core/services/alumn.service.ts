@@ -15,21 +15,17 @@ export class AlumnService {
 
   constructor(private httpClient: HttpClient){  }
 
-  getAlumns(): Observable<Alumn>{
-     return this.httpClient.get<Alumn>(this.UrlServiceAlumn);
+  async getAlumns(): Promise<any>{
+     const response = await this.httpClient.get<Alumn>(this.UrlServiceAlumn).toPromise();
+     return response;
   }
 
   createAlumn(alumn: Alumn): Observable<Alumn> {
     return this.httpClient.post<Alumn>(this.UrlServiceAlumn, alumn)
-      .pipe(
-        tap(() => {
-          this.listAlumns.push(alumn);
-        })
-      )
   }
 
-  deleteAlumn(id: number) {
-    return this.httpClient.delete(`${this.UrlServiceAlumn}${id}`);
+  deleteAlumn(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.UrlServiceAlumn}${id}`);
   }
 
 }

@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Alumn } from 'src/app/core/models/alumn.model';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AlumnService } from 'src/app/core/services/alumn.service';
 
 
@@ -11,11 +11,22 @@ import { AlumnService } from 'src/app/core/services/alumn.service';
 })
 
 
-export class FormAlumnComponent{
+export class FormAlumnComponent implements OnInit{
 
   selectCourse!: any;
+  isEdit: boolean = false;
+  dataEdit: any;
 
-  constructor( private alumnService: AlumnService, private dialogRef: MatDialog){  }
+  constructor(
+               public dialogRef: MatDialog,
+               private alumnService: AlumnService,
+               @Inject(MAT_DIALOG_DATA) public data: any,
+               ){
+              }
+
+
+  ngOnInit() {
+  }
 
   saveAlumn(form: NgForm){
     console.log(form)
@@ -24,9 +35,7 @@ export class FormAlumnComponent{
         "FullName": "Pepo",
         "Identification": "102892321",
         "Code": "code102",
-        "Course": "Docker",
         "State": true,
-        "AdmissionDate": new Date('02/23/2022'),
         "AlumnId": 9821
         // "FullName": form.value.firstName +' '+ form.value.lastName,
         // "Identification": form.value.identification,
@@ -39,5 +48,7 @@ export class FormAlumnComponent{
       this.dialogRef.closeAll();
     }
   }
+
+
 
 };

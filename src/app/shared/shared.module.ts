@@ -8,13 +8,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
     SidenavComponent,
     ToolbarComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutComponent
   ],
   exports: [
     SidenavComponent,

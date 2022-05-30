@@ -1,24 +1,11 @@
 <section>
   <form
+    [formGroup]="form"
     fxLayout="column"
     fxLayoutAlign="center center"
-    #f="ngForm"
-    (ngSubmit)="registerUser(f)"
+    (ngSubmit)="registerUser()"
   >
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        placeholder="Email"
-        ngModel
-        name="email"
-        email
-        required
-        #emailInput="ngModel"
-      />
-      <mat-error *ngIf="emailInput.hasError('required')">Dont</mat-error>
-    </mat-form-field>
+  <h1 mat-dialog-title>Registro de usuario</h1>
     <mat-form-field>
       <mat-label>First Name</mat-label>
       <input
@@ -26,7 +13,7 @@
         matInput
         placeholder="First Name"
         ngModel
-        name="firstName"
+        formControlName="firstName"
         required
       />
       <mat-error>Debe ingresar nombre</mat-error>
@@ -38,23 +25,39 @@
         matInput
         placeholder="Last Name"
         ngModel
-        name="lastName"
+        formControlName="lastName"
       />
     </mat-form-field>
-
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        ngModel
+        formControlName="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        formControlName="email"
+        email
+        required
+      />
+      <mat-error>Debe ingresar email</mat-error>
+    </mat-form-field>
     <button
+      [disabled]="form.invalid"
       type="submit"
       mat-raised-button
       color="primary"
-      [disabled]="f.invalid"
     >
       Save
     </button>
   </form>
 </section>
-
-<!-- <section id="container">
-  <div id="one" class="element"></div>
-  <div id="two" class="element"></div>
-  <div id="three" class="element"></div>
-</section> -->
