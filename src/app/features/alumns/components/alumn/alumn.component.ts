@@ -28,14 +28,15 @@ export class AlumnComponent implements OnInit, OnDestroy {
 
   private alumnSubscription!: Subscription;
 
-  constructor(private _alumnService: AlumnService,
-              private dialog: MatDialog,
-              private courseService: CourseService) {
-
+  constructor(private dialog: MatDialog,
+              private alumnService: AlumnService) {
   }
 
   async ngOnInit() {
-    this.currentCourses = await this.courseService.getCourses();
+    await this.alumnService.getAlumns()
+    this.alumnService.listAlumns$.subscribe((alumns: any) => {
+      this.listAlumns = alumns;
+    })
   }
 
   ngOnDestroy(): void {
@@ -45,12 +46,13 @@ export class AlumnComponent implements OnInit, OnDestroy {
   }
 
   removeAlumn(id: number){
-    this._alumnService.deleteAlumn(id).subscribe( response => console.log(response))
+    this.alumnService.deleteAlumn(id);
   }
 
-  openDialogEdit(){
+  openDialogEdit(alumn: any){
     this.dialog.open(FormAlumnComponent, {
-      width: '450px'
+      width: '450px',
+      data: alumn
     });
   }
 

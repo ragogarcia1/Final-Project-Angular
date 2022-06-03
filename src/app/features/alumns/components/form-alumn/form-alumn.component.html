@@ -1,6 +1,6 @@
-<form #form="ngForm"
-      (ngSubmit)="saveAlumn(form)">
-      <h1 mat-dialog-title>Agregar Alumno</h1>
+<form [formGroup]="form"
+      (ngSubmit)="saveAlumn()">
+      <h1 mat-dialog-title>Editar Alumno</h1>
       <mat-dialog-content>
         <section fxLayoutAlign="center">
           <mat-card fxFlex="100%">
@@ -10,44 +10,29 @@
                   >
                   <mat-form-field style="width: 100%">
                     <mat-label> Código de estudiante</mat-label>
-                    <input type="text" matInput name="code" [(ngModel)]='data.Code' required>
+                    <input type="text" matInput formControlName="code" [(ngModel)]='data.Code' required>
                     <mat-error>Debe ingresar código</mat-error>
                   </mat-form-field>
               <mat-form-field style="width: 100%">
                 <mat-label> Nombre completo (Nombres y apellidos)</mat-label>
-                <input type="text" matInput name="firstName" ngModel  [(ngModel)]='data.FullName'  required>
+                <input type="text" matInput formControlName="fullName" [(ngModel)]='data.FullName'  required>
                 <mat-error>Debe ingresar nombre</mat-error>
               </mat-form-field>
               <mat-form-field style="width: 100%">
                 <mat-label> Email </mat-label>
-                <input type="email" matInput name="email"[(ngModel)]='data.Email' ngModel required>
+                <input type="email" matInput formControlName="email" [(ngModel)]='data.Email' required>
                 <mat-error>Debe ingresar email</mat-error>
               </mat-form-field>
               <mat-form-field style="width: 100%">
                 <mat-label> Identificación </mat-label>
-                <input type="text" matInput name="identification"  maxlength="15" [(ngModel)]='data.Identification' ngModel required>
+                <input type="text" matInput formControlName="identification" [(ngModel)]='data.Identification' required>
                 <mat-error>Debe ingresar identificación</mat-error>
               </mat-form-field>
               <!-- <mat-form-field style="width: 100%">
-                <mat-label> Seleccione curso </mat-label>
-                <mat-select [(ngModel)]="selectCourse" name="course">
-                  <mat-option value="React">
-                    React
-                  </mat-option>
-                  <mat-option value="Angular">
-                    Angular
-                  </mat-option>
-                  <mat-option value="Docker">
-                    Docker
-                  </mat-option>
-                  <mat-option value="C#">
-                    C#
-                  </mat-option>
-                  <mat-option value="SQL">
-                    SQL
-                  </mat-option>
-                </mat-select>
-                <mat-error>Debe ingresar identificación</mat-error>
+                <mat-label>Cursos inscritos</mat-label>
+                <mat-list *ngFor="let course of data.Courses">
+                  <mat-list-item>{{ course.name }}</mat-list-item>
+                </mat-list>
               </mat-form-field> -->
             </div>
           </mat-card>
@@ -57,6 +42,5 @@
         <button mat-button [mat-dialog-close]="true">Cerrar</button>
         <button mat-button type="submit">Guardar</button>
       </mat-dialog-actions>
-
 </form>
 

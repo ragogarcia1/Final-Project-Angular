@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class CoursesComponent implements OnInit, OnDestroy{
 
-  courses$!: Observable<any>;
   courses!: any;
 
   constructor(private _courseService: CourseService) {

@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Alumn } from '../../../../core/models/alumn.model';
+import { AlumnService } from '../../../../core/services/alumn.service';
 
 @Component({
   selector: 'app-form-alumn-create',
@@ -18,13 +19,14 @@ export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
   cursosSubscription: any;
 
   constructor(private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public dataCourses: any) {
+    @Inject(MAT_DIALOG_DATA) public dataCourses: any,
+    public dialogRef: MatDialog,
+    private alumnService: AlumnService) {
     this.form = this.formBuilder.group({
       'fullName': [undefined, Validators.required],
-      'identification': [undefined, Validators.required, Validators.maxLength(20)],
+      'identification': [null, [Validators.required, Validators.maxLength(20)]],
       'code': [undefined, Validators.required],
-      'email': [undefined, Validators.required, Validators.email],
-      'courses': [undefined],
+      'email': [null, [Validators.required, Validators.email]]
     })
   }
 
@@ -39,41 +41,19 @@ export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
   get identification() { return this.form.get('identification'); }
   get code() { return this.form.get('code'); }
   get email() { return this.form.get('email'); }
-  get courses() { return this.form.get('courses'); }
 
-  saveAlumn() {
-    const alumn: any = {
+  async saveAlumn() {
+    const alumn: Alumn = {
       "Code": this.code?.value,
-
+      "FullName": this.fullName?.value,
+      "Identification": this.identification?.value,
+      "Email": this.email?.value,
+      "State": true,
     }
     console.log(alumn, this.form)
-  }
-
-  setIdentification(event: any){
-    const ID = event.source.value;
-    this.identification?.setValue(ID)
-  }
-
-  setCourse(event: any){
-    const course = event.source.value;
-    this.courses?.setValue(course)
-  }
-
-  async validationEmail() {
-    let email = this.email?.value;
-    //Una implementación del Estandard Official: RFC 5322
-    if (!/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/gm.test(email)) {
-      this.strErrorEmail = this.strEmailInvalid;
-      return false;
-    }
-    else if (/(@hotmail\.com|@gmail\.com)$/i.test(email)) {
-      if (/[ñÑ]/.test(email)) {
-        this.strErrorEmail = this.strEmailLetterInvalid;
-        return false;
-      }
-    }
-
-    this.strErrorEmail = null;
-    return true;
+    
+    let response = await this.alumnService.createAlumn(alumn);
+    console.log("Resp", response )
+    this.dialogRef.closeAll();
   }
 }

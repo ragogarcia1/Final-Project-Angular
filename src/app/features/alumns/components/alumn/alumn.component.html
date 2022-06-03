@@ -15,7 +15,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>Cursos</mat-header-cell>
     <mat-cell *matCellDef="let alumn">
       <mat-nav-list>
-        <mat-list-item role="listitem">{{ alumn.Course }}</mat-list-item>
+        <mat-list-item role="listitem">{{ alumn.Courses }}</mat-list-item>
       </mat-nav-list>
     </mat-cell>
   </ng-container>
@@ -33,7 +33,7 @@
       <button color="warn" mat-raised-button (click)="removeAlumn(alumn.AlumnId)">
         {{ 'Eliminar' }}
       </button>
-      <button color="accent" mat-raised-button (click)="openDialogEdit()">
+      <button color="accent" mat-raised-button (click)="openDialogEdit(alumn)">
         {{ 'Editar' }}
       </button>
     </mat-cell>

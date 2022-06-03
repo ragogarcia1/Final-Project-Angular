@@ -28,14 +28,12 @@
                 <input type="text" matInput formControlName="identification" maxlength="15" ngModel required>
                 <mat-error>Debe ingresar identificación</mat-error>
               </mat-form-field>
-              <mat-form-field style="width: 100%">
-                <mat-label> Seleccione curso </mat-label>
+                <!-- <mat-label> Seleccione curso </mat-label>
                 <mat-select formControlName="courses">
                   <mat-option *ngFor="let course of dataCourses" [value]="course" (onSelectionChange)="setCourse($event)">
                     {{ course.Name }}
                   </mat-option>
-                </mat-select>
-              </mat-form-field>
+                </mat-select> -->
             </div>
           </mat-card>
         </section>

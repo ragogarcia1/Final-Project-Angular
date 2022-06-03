@@ -9,17 +9,17 @@ import { Course } from "../models/course.model";
 
 export class CourseService {
 
-  public listCourses = new BehaviorSubject<any>(null);
+  UrlServiceCourse: string = 'https://625f17ca873d6798e2b2ca9c.mockapi.io/Prject/api/Course/';
+
+  listCourses = new BehaviorSubject<any>(null);
   listCourses$ = this.listCourses.asObservable();
 
-  listCourse!: Course[];
   courseSubject = new Subject<Course>();
 
   constructor(private httpClient: HttpClient){
 
   }
 
-  public UrlServiceCourse: string = 'https://625f17ca873d6798e2b2ca9c.mockapi.io/Prject/api/Course/';
 
 
   async getCourses(): Promise<any>{
