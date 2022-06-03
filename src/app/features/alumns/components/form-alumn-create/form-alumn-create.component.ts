@@ -50,10 +50,7 @@ export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
       "Email": this.email?.value,
       "State": true,
     }
-    console.log(alumn, this.form)
-    
-    let response = await this.alumnService.createAlumn(alumn);
-    console.log("Resp", response )
+    await this.alumnService.createAlumn(alumn);
     this.dialogRef.closeAll();
   }
 }

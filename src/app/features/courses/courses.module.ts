@@ -6,13 +6,17 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CoursesRoutingModule } from './courses.routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
 
 
 
 @NgModule({
   declarations: [
     CourseComponent,
-    CoursesComponent
+    CoursesComponent,
+    CreateCourseComponent,
+    EditCourseComponent
   ],
   imports: [
     CommonModule,

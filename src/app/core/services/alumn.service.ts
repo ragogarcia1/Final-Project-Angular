@@ -38,7 +38,8 @@ export class AlumnService {
     if (response) { await this.getAlumns(); }
   }
 
-  async editAlumn(alumn: Alumn){
-
+  async editAlumn(alumn: Alumn, id: any): Promise<any> {
+    const response = await this.httpClient.put<Alumn>(`${this.UrlServiceAlumn}/${id}`, alumn).toPromise();
+    if (response) { await this.getAlumns(); }
   }
 }
