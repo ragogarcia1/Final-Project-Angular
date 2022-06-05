@@ -1,1 +1,33 @@
-<p>create-course works!</p>
+<form [formGroup]="form"
+      (ngSubmit)="saveCourse()">
+      <mat-dialog-content>
+        <section fxLayoutAlign="center">
+          <mat-card fxFlex="100%">
+            <div fxLayout="column"
+                  fxLayoutAlign="center center"
+                  fxLayoutGap="10px"
+                  >
+            </div>
+            <mat-form-field style="width: 100%">
+              <mat-label>Nombre del curso</mat-label>
+              <input type="text" matInput formControlName="name" ngModel required>
+              <mat-error>Debe ingresar nombre</mat-error>
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+              <mat-label>Descripción del curso</mat-label>
+              <input type="text" matInput formControlName="description" ngModel required>
+              <mat-error>Debe ingresar descripción</mat-error>
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+              <mat-label>Nombre del profesor</mat-label>
+              <input type="text" matInput formControlName="teacher" ngModel required>
+              <mat-error>Debe ingresar profesor</mat-error>
+            </mat-form-field>
+          </mat-card>
+        </section>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="true">Cerrar</button>
+        <button mat-button type="submit" [disabled]="form.invalid">Guardar</button>
+      </mat-dialog-actions>
+</form>

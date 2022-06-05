@@ -4,11 +4,11 @@
           <h3>{{ course.Name | uppercase }}</h3></mat-card-title>
       </mat-card-header>
       <mat-card-content>
-          <p>{{ course.Description | slice: 0 : 10 }}</p>
+          <p>{{ course.Description }}</p>
       </mat-card-content>
       <mat-card-actions>
-          <button (click)="removeCourse()" mat-raised-button color="warn"> Eliminar </button>
-          <button (click)="editCourse()" mat-raised-button color="primary"> Editar </button>
+          <button (click)="removeCourse(course.CourseId)" mat-raised-button color="warn"> Eliminar </button>
+          <button (click)="editCourse(course)" mat-raised-button color="primary"> Editar </button>
       </mat-card-actions>
   <mat-card-footer></mat-card-footer>
 </mat-card>

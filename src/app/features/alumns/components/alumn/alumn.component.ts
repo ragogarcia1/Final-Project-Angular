@@ -1,16 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 //Components
 import { FormAlumnComponent } from '../form-alumn/form-alumn.component';
-//Models
-import { Alumn } from 'src/app/core/models/alumn.model';
 //Services
 import { AlumnService } from 'src/app/core/services/alumn.service';
 //MaterialUI
-import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAlumnCreateComponent } from '../form-alumn-create/form-alumn-create.component';
-import { CourseService } from '../../../../core/services/course.service';
 
 @Component({
   selector: 'alumn',

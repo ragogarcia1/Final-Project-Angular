@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Alumn } from 'src/app/core/models/alumn.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlumnService } from 'src/app/core/services/alumn.service';
 @Component({
   selector: 'form-alumn',
@@ -11,9 +11,6 @@ import { AlumnService } from 'src/app/core/services/alumn.service';
 export class FormAlumnComponent implements OnInit{
 
   form!: FormGroup;
-  selectCourse!: any;
-  isEdit: boolean = false;
-  dataEdit: any;
 
   constructor( private formBuilder: FormBuilder,
                public dialogRef: MatDialog,

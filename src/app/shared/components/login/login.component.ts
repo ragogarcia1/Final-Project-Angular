@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(form: NgForm){
-    console.log('Form', form.value)
     if(form.valid){
       this._serviceSecutiry.login({
         email: form.value.email,

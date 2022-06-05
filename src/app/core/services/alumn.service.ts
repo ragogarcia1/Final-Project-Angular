@@ -19,7 +19,6 @@ export class AlumnService {
   async getAlumns(): Promise<any>{
      const response = await this.httpClient.get<Alumn>(this.UrlServiceAlumn).toPromise();
      if (response) { this.setAlumns(response) }
-     console.log(this.listAlumns)
   }
 
   setAlumns(alumnData: any){
@@ -27,7 +26,6 @@ export class AlumnService {
   }
 
   async createAlumn(alumn: Alumn): Promise<any>{
-    debugger
      const response =  await this.httpClient.post<Alumn>(this.UrlServiceAlumn, alumn).toPromise();
      if (response) { await this.getAlumns(); }
      return response;

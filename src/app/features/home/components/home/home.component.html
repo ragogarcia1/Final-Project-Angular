@@ -1,1 +1,19 @@
-<p>home works!</p>
+<section class="row" style="padding: 25px;">
+  <h1 class="bold">{{ "Inscripciones a cursos" | uppercase }}</h1>
+  <mat-card class="col-md-4" *ngFor="let course of courses">
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{ course.Name | uppercase }}</h3></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p> {{ course.Description }} </p>
+        </mat-card-content>
+        <mat-card-content *ngFor="let alumn of courses.Alumns">
+          <mat-list> {{ alumn.FullName }}</mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <button  mat-raised-button color="primary" (click)="addStudentCourse(course)"> Inscribir estudiante </button>
+        </mat-card-actions>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+</section>

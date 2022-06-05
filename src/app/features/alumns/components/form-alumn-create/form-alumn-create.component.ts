@@ -31,7 +31,6 @@ export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dataCourses)
   }
 
   ngAfterViewInit(): void {
