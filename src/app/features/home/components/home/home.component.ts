@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   courses: any;
   alumns: any;
-
+  alumnsEnrolled: any;
   constructor(private dialog: MatDialog, private _courseService: CourseService, private _alumnService: AlumnService) {
     this._courseService.getCourses();
     this._courseService.listCourses$.subscribe((courses: Course) => {
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this._alumnService.listAlumns$.subscribe((alumns: any) => {
       this.alumns = alumns;
     })
-   }
+  }
 
   ngOnInit(): void {
   }

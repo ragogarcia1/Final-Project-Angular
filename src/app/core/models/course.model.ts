@@ -3,4 +3,5 @@ export interface Course {
   Name: string;
   Description: string;
   Teacher?: string;
+  Alumns?: []
 }
