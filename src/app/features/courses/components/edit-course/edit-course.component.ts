@@ -12,7 +12,10 @@ import { CourseService } from '../../../../core/services/course.service';
 export class EditCourseComponent implements OnInit {
 
   form!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private courseService: CourseService) {
+  constructor(private formBuilder: FormBuilder,
+              private dialogRef: MatDialog,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private courseService: CourseService) {
     this.form = this.formBuilder.group({
       'name': [undefined, Validators.required],
       'description': [undefined, Validators.required],
@@ -21,6 +24,7 @@ export class EditCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("edit",this.data);
   }
 
   get name() { return this.form.get('name'); }

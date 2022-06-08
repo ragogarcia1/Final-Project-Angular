@@ -28,10 +28,6 @@ export class CourseService {
      return response
   }
 
-  async enrollStudent(){
-
-  }
-
   async createCourse(course: Course): Promise<any>{
     const response =  await this.httpClient.post<Course>(this.UrlServiceCourse, course).toPromise();
     if (response) { await this.getCourses(); }

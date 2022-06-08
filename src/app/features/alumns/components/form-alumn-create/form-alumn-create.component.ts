@@ -9,7 +9,7 @@ import { AlumnService } from '../../../../core/services/alumn.service';
   templateUrl: './form-alumn-create.component.html',
   styleUrls: ['./form-alumn-create.component.css']
 })
-export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
+export class FormAlumnCreateComponent implements OnInit {
 
   form!: FormGroup;
   strErrorEmail: any;
@@ -31,9 +31,6 @@ export class FormAlumnCreateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
   }
 
   get fullName() { return this.form.get('fullName'); }

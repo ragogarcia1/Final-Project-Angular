@@ -1,11 +1,11 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { CourseState } from '../core/models/course.state';
-import { coursesReducer } from './course.reducer';
+import { Course } from '../core/models/course.model';
+import { courseReducer } from './course.reducer';
 
 export interface AppState {
-  courses: CourseState
+  courses: any
 }
 
 export const ROOT_REDUCERS : ActionReducerMap<AppState> = {
-  courses: coursesReducer
+  courses: courseReducer
 }

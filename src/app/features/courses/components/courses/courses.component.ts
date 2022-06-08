@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { CreateCourseComponent } from '../create-course/create-course.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Action, Store } from '@ngrx/store';
-import { loadCourseRedux, loadCompletedCourseRedux } from '../../../../state/course.action';
+import { loadCompletedCourseRedux, loadCourseRedux } from '../../../../state/course.actions';
 
 interface AppState {
   state: any;

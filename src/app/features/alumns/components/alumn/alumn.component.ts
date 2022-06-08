@@ -14,15 +14,13 @@ import { FormAlumnCreateComponent } from '../form-alumn-create/form-alumn-create
   styleUrls: ['./alumn.component.css']
 })
 
-export class AlumnComponent implements OnInit, OnDestroy {
+export class AlumnComponent implements OnInit {
 
   deployColumns = ['FullName','Code','Identification', 'Courses', 'State', 'Action'];
 
   listAlumns!: any;
 
   currentCourses!: any;
-
-  private alumnSubscription!: Subscription;
 
   constructor(private dialog: MatDialog,
               private alumnService: AlumnService) {
@@ -33,12 +31,6 @@ export class AlumnComponent implements OnInit, OnDestroy {
     this.alumnService.listAlumns$.subscribe((alumns: any) => {
       this.listAlumns = alumns;
     })
-  }
-
-  ngOnDestroy(): void {
-    if(this.alumnSubscription){
-      this.alumnSubscription.unsubscribe();
-    }
   }
 
   removeAlumn(id: number){

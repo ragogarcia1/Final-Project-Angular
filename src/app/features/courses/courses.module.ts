@@ -10,6 +10,9 @@ import { CreateCourseComponent } from './components/create-course/create-course.
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ROOT_REDUCERS } from 'src/app/state/app.state';
+import { environment } from '../../../environments/environment.prod';
 
 
 
@@ -28,11 +31,9 @@ import { StoreModule } from '@ngrx/store';
     CoursesRoutingModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(ROOT_REDUCERS)
+    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, name: 'courses' })
   ],
 })
 export class CoursesModule { }
-function ROOT_REDUCERS(ROOT_REDUCERS: any): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
-  throw new Error('Function not implemented.');
-}
 
